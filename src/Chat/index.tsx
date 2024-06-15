@@ -28,35 +28,7 @@ export default function ChatInterface() {
                         type: "user"
                     },
                     {
-                        text: "Noted that, lets proceed now.",
-                        type: "bot"
-                    },
-                    {
-                        text: "Do you have any fever within this week?",
-                        type: "bot"
-                    },
-                    {
-                        text: "Do you have any fever within this week?",
-                        type: "bot"
-                    },
-                    {
-                        text: "Do you have any fever within this week?",
-                        type: "bot"
-                    },
-                    {
-                        text: "Do you have any fever within this week?",
-                        type: "bot"
-                    },
-                    {
-                        text: "Do you have any fever within this week?",
-                        type: "bot"
-                    },
-                    {
-                        text: "Do you have any fever within this week?",
-                        type: "bot"
-                    },
-                    {
-                        text: "Do you have any fever within this week?",
+                        text: "Okay, lets proceed now.",
                         type: "bot"
                     },
                     {

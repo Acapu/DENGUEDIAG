@@ -1,4 +1,6 @@
 import './style.css'
+import people from '/people.png'
+import robot from '/robot.png'
 
 interface props {
     dialog: string;
@@ -11,9 +13,7 @@ export default function ChatBody({ dialog = "", type = "bot" }: props) {
             <div className={`chat-bubble ${type === "bot" ? 'left' : 'right'}`}>
                 {dialog}
             </div>
-            <div className={`chat-avatar ${type}`}>
-
-            </div>
+            <img src={type === "bot" ? robot : people} alt="Avatar" className={`chat-avatar ${type}`}/>
         </div>
     )
 }
