@@ -9,10 +9,12 @@
     width: 70%;
     height: 80vh;
     border-radius: 3%;
+    box-shadow: 5px 10px 17px rgb(99, 99, 99);
 }
 
 .chat-header {
     background-color: black;
+    display: flex;
     padding: 0.1rem;
     border-top-left-radius: 0.7rem;
     border-top-right-radius: 0.7rem;
@@ -46,14 +48,15 @@
 }
 
 .chat-footer > h4 {
-    color: rgb(133, 133, 133);
+    color: rgb(105, 105, 105);
     margin: 0px;
     padding: 0px 0.6em;
 }
 
 .chat-header > h2 {
-    padding: 0 1em;
+    padding: 0 0.5em;
     color: white;
+    flex-grow: 1;
 }
 
 .chat-bubble-container {
@@ -78,6 +81,7 @@
     font-size: large;
     font-weight: 500;
     padding: 1em;
+    box-shadow: 5px 5px rgb(53, 53, 53);
 }
 
 .left {
@@ -102,7 +106,7 @@
 }
 
 .bot {
-    background-color: #cce093;
+    background-color: #dbebb2;
 }
 
 .user {
