@@ -2,7 +2,7 @@ import ChatBubble from 'components/Chat/ChatBubble'
 import './style.css'
 
 interface chatType {
-    text: string,
+    text: any,
     type: string
 }
 

@@ -13,7 +13,7 @@ export default function ChatBody({ dialog = "", type = "bot" }: props) {
             <div className={`chat-bubble ${type === "bot" ? 'left' : 'right'}`}>
                 {dialog}
             </div>
-            <img src={type === "bot" ? robot : people} alt="Avatar" className={`chat-avatar ${type}`}/>
+            <img src={type === "bot" ? robot : people} alt="Avatar" className={`chat-avatar`}/>
         </div>
     )
 }
