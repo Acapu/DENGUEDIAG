@@ -69,7 +69,11 @@ export default function ChatInterface() {
 
     return (
         <ChatContainer>
-            <ChatHeader title='DengueDiag Bot' />
+            <ChatHeader title='DengueDiag Bot' reloadChat={() => setDialog([{
+                text: "Hello there, I am DengueDiag bot. How can I help you?",
+                type: "bot",
+                id: getRandomNumber()
+            }])} />
             {/* <div> */}
             <ChatBody dialog={dialog} />
             {/* <ChatFooter
