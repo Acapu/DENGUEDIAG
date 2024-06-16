@@ -24,6 +24,7 @@
 .chat-body {
     margin: 0px;
     max-height: calc(75vh - 80px);
+    height: calc(75vh - 80px);
     border-bottom-left-radius: 0.7em;
     border-bottom-right-radius: 0.7em;
     /* background-color: #dbebb2; */
