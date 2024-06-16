@@ -3,7 +3,8 @@ import './style.css'
 
 interface chatType {
     text: any,
-    type: string
+    type: string,
+    id: string
 }
 
 interface props {
@@ -12,12 +13,12 @@ interface props {
 
 export default function ChatBody({ dialog = [] }: props) {
     return (
-        <div className='chat-body'>
-            {dialog.map(({text, type}, index) => {
+        <ul className='chat-body'>
+            {dialog.map(({text, type, id}, index) => {
                 return (
-                    <ChatBubble key={index} dialog={text} type={type}/>
+                    <ChatBubble id={id} key={index} dialog={text} type={type}/>
                 )
             })}
-        </div>
+        </ul>
     )
 }

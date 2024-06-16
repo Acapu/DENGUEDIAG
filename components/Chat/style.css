@@ -10,7 +10,7 @@
     width: 70%;
     height: fit-content;
     border-radius: 0.7rem;
-    box-shadow: 5px 10px 17px rgb(119, 119, 119);
+    box-shadow: 5px 7px 15px rgb(119, 119, 119);
 }
 
 .chat-header {
@@ -22,15 +22,19 @@
 }
 
 .chat-body {
+    margin: 0px;
     max-height: calc(75vh - 80px);
     border-bottom-left-radius: 0.7em;
     border-bottom-right-radius: 0.7em;
-    background-color: #dbebb2;
-    padding: 0.7rem 1.5rem 2rem;
+    /* background-color: #dbebb2; */
+    background-color: #c7d6a1;
+    /* background-color: rgb(41, 173, 173); */
+    padding: 2rem 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 0.6em;
     overflow-y: auto;
+    scroll-behavior: smooth;
 }
 
 .chat-footer {
@@ -67,7 +71,7 @@
     /* background-color: #e5fca8; */
     padding: 0px 0px 10px;
     display: flex;
-    gap: 10px;
+    gap: 8px;
 }
 
 .bubble-right {
@@ -78,23 +82,43 @@
     background-color: cornsilk;
 }
 
+@keyframes enterleft {
+    0% {left: -30px}
+    25% {left: -25px}
+    50% {left: -15px}
+    75% {left: -10px}
+    100% {left: 0px}
+}
+
+@keyframes enterright {
+    0% {left: 30px}
+    25% {left: 25px}
+    50% {left: 15px}
+    75% {left: 10px}
+    100% {left: 0px}
+}
+
 .chat-bubble {
     background-color: whitesmoke;
+    max-width: 60%;
     width: fit-content;
     color: black;
     font-size: large;
     font-weight: 500;
     padding: 1em;
     box-shadow: 5px 5px rgb(53, 53, 53);
+    position: relative;
 }
 
 .left {
     border-radius: 1em 1em 1em 0;
     order: 2;
+    animation: enterleft 0.2s ease-in;
 }
 
 .right {
     border-radius: 1em 1em 0 1em;
+    animation: enterright 0.2s ease-in;
 }
 
 .chat-avatar {
@@ -122,6 +146,7 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #96f8bf;
+  border-radius: 15px;
 }
 
 /* Handle on hover */
