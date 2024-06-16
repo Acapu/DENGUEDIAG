@@ -1,4 +1,3 @@
-import './style.css'
 import ChatContainer from "components/Chat/ChatContainer"
 import ChatHeader from "components/Chat/ChatHeader"
 // import ChatFooter from "components/Chat/ChatFooter"

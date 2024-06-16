@@ -8,13 +8,18 @@ interface props {
     reloadChat: React.MouseEventHandler<HTMLButtonElement>
 }
 
-export default function ChatHeader({ title, reloadChat = () => {} }: props) {
+export default function ChatHeader({ title, reloadChat = () => { } }: props) {
     const navigate = useNavigate();
 
     return (
         <div className='chat-header'>
             <button style={{ width: "fit-content", backgroundColor: "transparent" }}
-                onClick={() => navigate("/home")}
+                onClick={() => {
+                    let confirmation = confirm("Are you sure you want to leave this page? Any progress won't be saved.");
+                    if (confirmation) {
+                        navigate("/home", { replace: true });
+                    }
+                }}
             >
                 <img src={LeftArrow} style={{ width: "1.5em" }} />
             </button>

@@ -1,0 +1,120 @@
+.home-container {
+    /* background-color: aquamarine; */
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0.5em;
+}
+
+.home-header {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    /* background-color:orange; */
+}
+
+.main-title {
+    font-size: 4em;
+    text-decoration: underline;
+    text-underline-offset: 7px;
+}
+
+.home-header .dengue {
+    animation: denguetitlecolor 3.5s ease-in-out 0s infinite;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+}
+
+.home-header .diag {
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+}
+
+.home-header>.subtitle {
+    font-size: 1.5em;
+    color: rgba(31, 31, 31, 0.589);
+    text-decoration: overline;
+    text-decoration-style: dashed;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.home-body {
+    padding: 2em;
+}
+
+@keyframes denguetitlecolor {
+    0% {
+        color: inherit;
+    }
+
+    50% {
+        color: rgb(250, 80, 80);
+    }
+
+    100% {
+        color: inherit;
+    }
+}
+
+.start-diagnosis-button {
+    max-width: 60%;
+    width: fit-content;
+    margin: 0 auto;
+    display: block;
+    font-size: 1.7em;
+    border-width: 3px;
+    /* transition: opacity 1s; */
+}
+
+
+.start-diagnosis-button:hover {
+    border-color: rgb(217, 255, 160);
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .start-diagnosis-button {
+        background-color: cadetblue;
+        color: rgb(255, 255, 255);
+    }
+    .start-diagnosis-button:hover {
+        border-color: aqua;
+    }
+    .home-header>.subtitle {
+        color: rgba(245, 245, 245, 0.61);
+    }
+    @keyframes denguetitlecolor {
+    0% {
+        color: inherit;
+    }
+
+    50% {
+        color: rgb(253, 112, 112);
+    }
+
+    100% {
+        color: inherit;
+    }
+}
+}
+
+@media (max-width: 700px) {
+    .home-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-title {
+        font-size: 3em;
+        text-decoration: none;
+    }
+
+    .home-header>.main-title,
+    .subtitle {
+        margin: 0px;
+    }
+
+    .start-diagnosis-button {
+        max-width: 95%;
+        font-size: 1.3em;
+    }
+}
