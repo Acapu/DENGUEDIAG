@@ -1,7 +1,7 @@
 .chat-container {
     margin: 0 auto;
     position: relative;
-    top: 80px;
+    top: 60px;
     /* background-color: rgba(153, 153, 153, 0.918); */
     /* background-color: rgb(41, 173, 173); */
     background-color: transparent;
@@ -137,9 +137,20 @@
     }
 }
 
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
 .chat-bubble {
     background-color: whitesmoke;
-    max-width: 60%;
+    max-width: fit-content;
     width: fit-content;
     color: black;
     font-size: large;
@@ -150,15 +161,28 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.chat-bubble > .word {
+    animation: typing 0.5s steps(40, end);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.answer {
+    animation: typing 3s steps(40, end);
+}
+
+.choice {
+    animation: enterright 0.3s ease-out;
+}
+
 .left {
     border-radius: 1em 1em 1em 0;
     order: 2;
-    animation: enterleft 0.3s ease-out;
+    /* animation: enterleft 0.3s ease-out; */
 }
 
 .right {
     border-radius: 1em 1em 0 1em;
-    animation: enterright 0.3s ease-out;
 }
 
 .chat-avatar {
@@ -200,6 +224,7 @@
         max-width: 100%;
         width: 100%;
     }
+
     .chat-body {
         padding: 1em 0.5em;
     }

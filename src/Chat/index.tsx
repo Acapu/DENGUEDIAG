@@ -31,7 +31,7 @@ export default function ChatInterface() {
 
     const [dialog, setDialog] = useState([
         {
-            text: "Hello there, I am DengueDiag bot. How can I help you?",
+            text: "Hello there, I am DengueDiag bot. How can I help you today?",
             type: "bot",
             id: getRandomNumber()
         },

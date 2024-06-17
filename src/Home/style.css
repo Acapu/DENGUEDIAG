@@ -16,6 +16,8 @@
     font-size: 4em;
     text-decoration: underline;
     text-underline-offset: 7px;
+    position: relative;
+    animation: mainTitleEntrance 0.3s ease-in;
 }
 
 .home-header .dengue {
@@ -31,6 +33,53 @@
     text-decoration-style: dashed;
     font-style: italic;
     font-weight: 500;
+    position: relative;
+    animation: subtitleEntrance 0.3s ease-in;
+}
+
+
+@keyframes mainTitleEntrance {
+    0% {
+        right: -90px;
+    }
+
+    25% {
+        right: -70px;
+    }
+
+    50% {
+        right: -50px;
+    }
+
+    75% {
+        right: -30px;
+    }
+
+    100% {
+        right: 0px;
+    }
+}
+
+@keyframes subtitleEntrance {
+    0% {
+        left: -90px;
+    }
+
+    25% {
+        left: -70px;
+    }
+
+    50% {
+        left: -50px;
+    }
+
+    75% {
+        left: -30px;
+    }
+
+    100% {
+        left: 0px;
+    }
 }
 
 .home-body {
@@ -72,25 +121,28 @@
         background-color: cadetblue;
         color: rgb(255, 255, 255);
     }
+
     .start-diagnosis-button:hover {
         border-color: aqua;
     }
+
     .home-header>.subtitle {
         color: rgba(245, 245, 245, 0.61);
     }
+
     @keyframes denguetitlecolor {
-    0% {
-        color: inherit;
-    }
+        0% {
+            color: inherit;
+        }
 
-    50% {
-        color: rgb(253, 112, 112);
-    }
+        50% {
+            color: rgb(253, 112, 112);
+        }
 
-    100% {
-        color: inherit;
+        100% {
+            color: inherit;
+        }
     }
-}
 }
 
 @media (max-width: 700px) {
