@@ -14,9 +14,9 @@ interface props {
 export default function ChatBody({ dialog = [] }: props) {
     return (
         <ul className='chat-body'>
-            {dialog.map(({text, type, id}, index) => {
+            {dialog.map(({text, type, id}) => {
                 return (
-                    <ChatBubble id={id} key={index} dialog={text} type={type}/>
+                    <ChatBubble id={id} key={id} dialog={text} type={type}/>
                 )
             })}
         </ul>

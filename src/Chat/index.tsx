@@ -35,16 +35,6 @@ export default function ChatInterface() {
             type: "bot",
             id: getRandomNumber()
         },
-        // {
-        //     text: "Do a diagnosis of dengue.",
-        //     type: "user",
-        //     id: getRandomNumber()
-        // },
-        // {
-        //     text: "Sure, is it for yourself or any other family member or friend?",
-        //     type: "bot",
-        //     id: getRandomNumber()
-        // },
         {
             text: (<div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
                 <button onClick={addDialog}>Dengue Diagnosis</button>
@@ -66,22 +56,20 @@ export default function ChatInterface() {
         }
     }, [dialog])
 
-    return (
-        <ChatContainer>
-            <ChatHeader title='DengueDiag Bot' reloadChat={() => setDialog([{
-                text: "Hello there, I am DengueDiag bot. How can I help you?",
+    const testReload = () => {
+        setDialog([
+            {
+                text: "Hello there, I am DengueDiag bot. How can I help you today?",
                 type: "bot",
                 id: getRandomNumber()
-            }])} />
-            {/* <div> */}
+            },
+        ]);
+    }
+
+    return (
+        <ChatContainer>
+            <ChatHeader title='DengueDiag Bot' reloadChat={testReload} />
             <ChatBody dialog={dialog} />
-            {/* <ChatFooter
-                    component={[
-                        <button>No</button>,
-                        <button>Yes</button>
-                    ]}
-                /> */}
-            {/* </div> */}
         </ChatContainer>
     )
 }

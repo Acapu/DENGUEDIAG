@@ -3,7 +3,7 @@ import people from '/people.png'
 import robot from '/robot.png'
 
 interface props {
-    dialog: string;
+    dialog: any;
     type: string;
     id: string;
 }
