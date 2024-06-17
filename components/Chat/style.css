@@ -139,12 +139,29 @@
 
 
 @keyframes typing {
-    from {
+    0% {
         width: 0;
+        white-space: nowrap;
     }
 
-    to {
+    25% {
+        width: 25%;
+        white-space: nowrap;
+    }
+
+    50% {
+        width: 50%;
+        white-space: nowrap;
+    }
+
+    75% {
+        width: 75%;
+        white-space: nowrap;
+    }
+
+    100% {
         width: 100%;
+        white-space: nowrap;
     }
 }
 
@@ -161,14 +178,16 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.chat-bubble > .word {
-    animation: typing 0.5s steps(40, end);
+.chat-bubble>.word {
+    animation: typing 0.5s steps(50, end);
+    animation-fill-mode: backwards;
     overflow: hidden;
-    white-space: nowrap;
+    margin: 0px;
+    display: block;
 }
 
 .answer {
-    animation: typing 3s steps(40, end);
+    animation: typing 3s steps(50, end);
 }
 
 .choice {
@@ -220,13 +239,37 @@
 }
 
 @media (max-width: 800px) {
+
+    @keyframes typing {
+        0% {
+            width: 0;
+            white-space: nowrap;
+        }
+
+        25% {
+            width: 25%;
+        }
+
+        50% {
+            width: 50%;
+        }
+
+        75% {
+            width: 75%;
+        }
+
+        100% {
+            width: 100%;
+        }
+    }
+
     .chat-container {
         max-width: 100%;
         width: 100%;
     }
 
     .chat-body {
-        padding: 1em 0.5em;
+        padding: 1em 1em;
     }
 }
 
