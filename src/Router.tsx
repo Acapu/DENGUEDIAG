@@ -7,7 +7,7 @@ import { lazy } from "react";
 const Home = lazy(() => import('./Home'));
 const Chat = lazy(() => import('./Chat'));
 
-const router = createBrowserRouter([
+const router: any = createBrowserRouter([
     {
         path: '/',
         element: <App />,
