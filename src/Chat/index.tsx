@@ -14,15 +14,16 @@ interface Dialog {
 export default function ChatInterface() {
 
     const [dialog, setDialog] = useState<Array<Dialog>>([]);
-    const [language, setLanguage] = useState<string>("en");
+    const [language, setLanguage] = useState<string>("my");
 
     const getRandomNumber = () => {
-        return Math.floor(Math.random() * new Date().getMilliseconds()).toString()
+        return Math.floor(Math.random() * new Date().getMilliseconds()).toString() + new Date().getMilliseconds().toString()
+        // return new Date().getMilliseconds().toString();
     }
 
-    const getAnswer = (id: number, index: number) => {
+    const getAnswer = (id: number, choice: number, value: string = "") => {
         const newDialog = {
-            text: Answer[id].answer[index][language],
+            text: value.length === 0 ? Answer[id].answer[choice][language] : value,
             type: "user",
             id: getRandomNumber()
         };
@@ -36,13 +37,13 @@ export default function ChatInterface() {
             latestDialog?.scrollIntoView({ behavior: "smooth" })
             clearTimeout(scrollTimeout);
         }, 200)
-        if (typeof(newDialog.text) === 'string') {
+        if (typeof (newDialog.text) === 'string') {
             const nextDialog = setTimeout(() => {
-                if (typeof(Answer[id].answer[index].nextQuestionID) === 'number') {
-                    addDialog(Answer[id].answer[index].nextQuestionID);
+                if (typeof (Answer[id].answer[choice].nextQuestionID) === 'number') {
+                    addDialog(Answer[id].answer[choice].nextQuestionID);
                 }
                 clearTimeout(nextDialog);
-            }, (newDialog.text.length * 30))
+            }, (newDialog.text.length * 40))
         }
     }
 
@@ -66,21 +67,27 @@ export default function ChatInterface() {
             }, 200)
             if (Question[id].choice !== null) {
                 const test = setTimeout(() => {
+                    const choiceDialog = {
+                        text: Question[id].choice(getAnswer),
+                        type: "user",
+                        id: getRandomNumber()
+                    }
                     setDialog(prevDialog => ([
                         ...prevDialog,
-                        {
-                            text: Question[id].choice(getAnswer),
-                            type: "user",
-                            id: getRandomNumber()
-                        },
+                        choiceDialog
                     ]))
+                    const scrollTimeout = setTimeout(() => {
+                        const cDialog = document.getElementById(choiceDialog.id);
+                        cDialog?.scrollIntoView({ behavior: "smooth" })
+                        clearTimeout(scrollTimeout);
+                    }, 200)
                     clearTimeout(test);
-                }, (botDialog.text.length * 30))
+                }, (botDialog.text.length * 40))
             } else {
                 const contBotDialog = setTimeout(() => {
                     addDialog(id + 1);
                     clearTimeout(contBotDialog);
-                }, (botDialog.text.length * 30))
+                }, (botDialog.text.length * 40))
             }
         }
     }
