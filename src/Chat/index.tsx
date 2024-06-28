@@ -14,7 +14,7 @@ interface Dialog {
 export default function ChatInterface() {
 
     const [dialog, setDialog] = useState<Array<Dialog>>([]);
-    const [language, setLanguage] = useState<string>("my");
+    const [language, setLanguage] = useState<string>("en");
 
     const getRandomNumber = () => {
         return Math.floor(Math.random() * new Date().getMilliseconds()).toString() + new Date().getMilliseconds().toString()
@@ -44,6 +44,13 @@ export default function ChatInterface() {
                 }
                 clearTimeout(nextDialog);
             }, (newDialog.text.length * 40))
+        } else {
+            const nextDialog = setTimeout(() => {
+                if (typeof (Answer[id].answer[choice].nextQuestionID) === 'number') {
+                    addDialog(Answer[id].answer[choice].nextQuestionID);
+                }
+                clearTimeout(nextDialog);
+            }, (500))
         }
     }
 
@@ -68,7 +75,7 @@ export default function ChatInterface() {
             if (Question[id].choice !== null) {
                 const test = setTimeout(() => {
                     const choiceDialog = {
-                        text: Question[id].choice(getAnswer),
+                        text: Question[id].choice(getAnswer, language),
                         type: "user",
                         id: getRandomNumber()
                     }

@@ -50,23 +50,49 @@ const Answer: Array<AnswerTemplate> = [
                 'en': "",
                 'my': "",
                 'value': 1,
-                nextQuestionID: 4
+                nextQuestionID: 5
             }
         ],
     },
-    { // Answer 3 - for mengalami ruam2
+    { // Answer 3
+        answer: [
+            {
+                'en': "",
+                'my': "",
+                'value': 1,
+                nextQuestionID: 5
+            }
+        ],
+    },
+    { // Answer 4 - for mengalami ruam2
         answer: [
             {
                 'en': "Yes.",
                 'my': "Ya.",
                 'value': 1,
-                nextQuestionID: 5
+                nextQuestionID: 6
             },
             {
                 'en': "No.",
                 'my': "Tidak.",
                 'value': 0,
                 nextQuestionID: 6
+            }
+        ],
+    },
+    { // Answer 5 - pendarahan mukosa
+        answer: [
+            {
+                'en': "Yes.",
+                'my': "Ya.",
+                'value': 1,
+                nextQuestionID: 7
+            },
+            {
+                'en': "No.",
+                'my': "Tidak.",
+                'value': 0,
+                nextQuestionID: 7
             }
         ],
     },
