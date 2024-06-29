@@ -240,27 +240,20 @@
 
 @media (max-width: 800px) {
 
-    @keyframes typing {
-        0% {
-            width: 0;
-            white-space: nowrap;
-        }
+    .chat-bubble>.word {
+        animation: normal;
+    }
 
-        25% {
-            width: 25%;
-        }
+    .answer {
+        animation: normal;
+    }
 
-        50% {
-            width: 50%;
-        }
+    .right {
+        animation: enterright 0.3s ease-out;
+    }
 
-        75% {
-            width: 75%;
-        }
-
-        100% {
-            width: 100%;
-        }
+    .left {
+        animation: enterleft 0.3s ease-out;
     }
 
     .chat-container {
