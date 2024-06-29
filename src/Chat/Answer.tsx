@@ -24,7 +24,7 @@ const Answer: Array<AnswerTemplate> = [
                 'en': "Tell me about dengue.",
                 'my': "Beritahu saya lebih lanjut tentang denggi.",
                 'value': 2,
-                nextQuestionID: 2
+                nextQuestionID: 0
             }
         ],
     },
@@ -50,7 +50,7 @@ const Answer: Array<AnswerTemplate> = [
                 'en': "",
                 'my': "",
                 'value': 1,
-                nextQuestionID: 5
+                nextQuestionID: 4
             }
         ],
     },
@@ -86,13 +86,109 @@ const Answer: Array<AnswerTemplate> = [
                 'en': "Yes.",
                 'my': "Ya.",
                 'value': 1,
-                nextQuestionID: 7
+                nextQuestionID: 8
             },
             {
                 'en': "No.",
                 'my': "Tidak.",
                 'value': 0,
-                nextQuestionID: 7
+                nextQuestionID: 8
+            }
+        ],
+    },
+    { // Answer 6
+        answer: [
+            {
+                'en': "",
+                'my': "",
+                'value': 1,
+                nextQuestionID: 5
+            }
+        ],
+    },
+    { // Answer 7
+        answer: [
+            {
+                'en': "",
+                'my': "",
+                'value': 1,
+                nextQuestionID: 9
+            }
+        ],
+    },
+    { // Answer 8 
+        answer: [
+            {
+                'en': "Yes.",
+                'my': "Ya.",
+                'value': 1,
+                nextQuestionID: 10
+            },
+            {
+                'en': "No.",
+                'my': "Tidak.",
+                'value': 0,
+                nextQuestionID: 10
+            }
+        ],
+    },
+    { // Answer 9 
+        answer: [
+            {
+                'en': "Yes.",
+                'my': "Ya.",
+                'value': 1,
+                nextQuestionID: 11
+            },
+            {
+                'en': "No.",
+                'my': "Tidak.",
+                'value': 0,
+                nextQuestionID: 11
+            },
+        ],
+    },
+    { // Answer 10 
+        answer: [
+            {
+                'en': "Yes.",
+                'my': "Ya.",
+                'value': 1,
+                nextQuestionID: 12
+            },
+            {
+                'en': "No.",
+                'my': "Tidak.",
+                'value': 0,
+                nextQuestionID: 12
+            },
+            {
+                'en': "Not Sure.",
+                'my': "Tidak Pasti.",
+                'value': 0,
+                nextQuestionID: 12
+            }
+        ],
+    },
+    { // Answer 11 
+        answer: [
+            {
+                'en': "Yes.",
+                'my': "Ya.",
+                'value': 1,
+                nextQuestionID: 13
+            },
+            {
+                'en': "No.",
+                'my': "Tidak.",
+                'value': 0,
+                nextQuestionID: 13
+            },
+            {
+                'en': "Not Sure.",
+                'my': "Tidak Pasti.",
+                'value': 0,
+                nextQuestionID: 13
             }
         ],
     },

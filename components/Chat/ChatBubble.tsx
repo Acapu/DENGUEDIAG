@@ -10,6 +10,7 @@ interface props {
 }
 
 export default function ChatBody({ id="", dialog = "", type = "bot" }: props) {
+    
     return (
         <li id={id} className={`chat-bubble-container ${type !== 'bot' ? "bubble-right" : ""}`}>
             <div className={`chat-bubble ${type === "bot" ? 'left' : 'right'} ${typeof(dialog) !== 'string' ? 'choice' : 'answer'}`}>
