@@ -42,7 +42,7 @@ interface AdditionalDengueInfo {
 export default function ChatInterface() {
 
     const [dialog, setDialog] = useState<Array<Dialog>>([]);
-    const [language, setLanguage] = useState<string>("en");
+    const [language, _] = useState<string>("en");
 
     const probablyDengue = useForm<AdditionalDengueInfo>({
         defaultValues: {

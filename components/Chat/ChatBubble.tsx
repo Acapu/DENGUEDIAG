@@ -1,6 +1,5 @@
 import './style.css'
 import people from '/people.png'
-import robot from '/robot.png'
 import mosquito from '/mosquito.png'
 
 interface props {
