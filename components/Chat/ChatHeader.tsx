@@ -2,13 +2,16 @@ import { useNavigate } from 'react-router-dom';
 import './style.css'
 import LeftArrow from '/leftArrow.svg'
 import Restart from '/restart.svg'
+import Toggle from 'components/Toggle/Toggle'
 
 interface props {
     title: string;
+    language: string;
+    setLanguage: Function;
     reloadChat: React.MouseEventHandler<HTMLButtonElement>
 }
 
-export default function ChatHeader({ title, reloadChat = () => { } }: props) {
+export default function ChatHeader({ title, language, setLanguage, reloadChat = () => { } }: props) {
     const navigate = useNavigate();
 
     return (
@@ -24,6 +27,7 @@ export default function ChatHeader({ title, reloadChat = () => { } }: props) {
                 <img src={LeftArrow} style={{ width: "1.5em" }} />
             </button>
             <h2> {title} </h2>
+            <Toggle language={language} setLanguage={setLanguage} />
             <button style={{ width: "fit-content", backgroundColor: "transparent" }}
                 onClick={reloadChat}
             >

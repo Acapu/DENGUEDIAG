@@ -1,0 +1,97 @@
+.toggle-container {
+    background-color: whitesmoke;
+    display: flex;
+    height: 2em;
+    cursor: pointer;
+    border-radius: 5em;
+    width: 4em;
+}
+
+.toggle-text-my {
+    position: absolute;
+    font-weight: bold;
+    top: 27px;
+    right: 6.5em;
+    color: black;
+}
+
+.toggle-text-en {
+    position: absolute;
+    font-weight: bold;
+    top: 27px;
+    right: 5.3em;
+    color: black;
+}
+
+.toggle {
+    position: relative;
+    background-color: black;
+    border-radius: 100%;
+    margin: 0.3em;
+    width: 35%;
+}
+
+.toggle-left {
+    animation: gotoleft 0.1s ease-out;
+    animation-fill-mode: forwards;
+}
+
+.toggle-right {
+    animation: gotoright 0.1s ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes gotoleft {
+    0% {
+        left: 10%
+    }
+
+    25% {
+        left: 20%
+    }
+
+    50% {
+        left: 30%
+    }
+
+    75% {
+        left: 40%
+    }
+
+    100% {
+        left: 50%
+    }
+}
+
+@keyframes gotoright {
+    0% {
+        left: 50%
+    }
+
+    25% {
+        left: 40%
+    }
+
+    50% {
+        left: 30%
+    }
+
+    75% {
+        left: 20%
+    }
+
+    100% {
+        left: 0%
+    }
+}
+
+
+@media (max-width: 400px) {
+    .toggle-text-my {
+        right: 6em;
+    }
+
+    .toggle-text-en {
+        right: 5em;
+    }
+}

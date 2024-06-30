@@ -246,8 +246,8 @@ const Question: Array<QuestionTemplate> = [
                 <>
                     <span>Beside the symptoms above, have you also experience any of this symptoms?</span>
                     <ul>
-                        <li>Persistent Diarhea/Stomachache</li>
-                        <li>Stomach pain (heartburn)</li>
+                        <li>Persistent diarrhoea</li>
+                        <li>Abdominal pain (heartburn)</li>
                         <li>Difficulty breathing</li>
                     </ul>
                 </>
@@ -292,7 +292,7 @@ const Question: Array<QuestionTemplate> = [
                     answer = lang === "en" ? "I never had any of the symptoms." : "Saya tidak mengalami simptom-simptom ini."
                 }
                 if (setCriticalSymptoms !== undefined) setCriticalSymptoms({
-                    persistentDiarhea: (target.elements[0] as HTMLInputElement).checked,
+                    persistentdiarrhoea: (target.elements[0] as HTMLInputElement).checked,
                     stomachpain: (target.elements[1] as HTMLInputElement).checked,
                     difficultyBreathing: (target.elements[2] as HTMLInputElement).checked,
                 })
@@ -302,12 +302,12 @@ const Question: Array<QuestionTemplate> = [
                     <span>{lang === 'en' ? "Tick any of the symptoms." : "Tandakan mana-mana gejala."}</span>
                     <div style={{ display: "flex", flexDirection: "column", rowGap: "7px" }}>
                         <div>
-                            <input id='persistentDiarhea-input' type='checkbox' value={lang === 'en' ? "Persistent Diarhea/Stomachache" : "Cirit birit berterusan"} />
-                            <label htmlFor='persistentDiarhea-input' style={{ margin: "0 2px" }}>{lang === 'en' ? "Persistent Diarhea/Stomachache" : "Cirit birit berterusan"}</label>
+                            <input id='persistentdiarrhoea-input' type='checkbox' value={lang === 'en' ? "Persistent diarrhoea" : "Cirit birit berterusan"} />
+                            <label htmlFor='persistentdiarrhoea-input' style={{ margin: "0 2px" }}>{lang === 'en' ? "Persistent diarrhoea" : "Cirit birit berterusan"}</label>
                         </div>
                         <div>
-                            <input id='stomachpain-input' type='checkbox' value={lang === 'en' ? "Stomach pain" : "Sakit pada bahagian perut (ulu hati)"} />
-                            <label htmlFor='stomachpain-input' style={{ margin: "0 2px" }}>{lang === 'en' ? "Stomach pain (heartburn)" : "Sakit pada bahagian perut (ulu hati)"}</label>
+                            <input id='stomachpain-input' type='checkbox' value={lang === 'en' ? "Abdominal pain" : "Sakit pada bahagian perut (ulu hati)"} />
+                            <label htmlFor='stomachpain-input' style={{ margin: "0 2px" }}>{lang === 'en' ? "Abdominal pain (heartburn)" : "Sakit pada bahagian perut (ulu hati)"}</label>
                         </div>
                         <div>
                             <input id='difficultyBreathing-input' type='checkbox' value={lang === 'en' ? "Difficulty breathing" : "Sukar bernafas"} />
@@ -322,8 +322,8 @@ const Question: Array<QuestionTemplate> = [
     {
         'questionID': 9,
         'question': {
-            "en": "Do you feel more tired than usual?",
-            "my": "Adakah anda berasa penat lebih dari biasa?"
+            "en": "Are you feeling agitated or restless right now?",
+            "my": "Adakah anda berasa gelisah atau resah sekarang?"
         },
         'choice': (getAnswer: Function, lang: string, setExtremeFatigue?: Function) => (
             <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
@@ -342,8 +342,8 @@ const Question: Array<QuestionTemplate> = [
     {
         'questionID': 10,
         'question': {
-            "en": "Do you feel that your level of consciousness is decreasing?",
-            "my": "Adakah anda merasakan tahap kesedaran anda semakin menurun?"
+            "en": "Have you noticed any changes in your level of consciousness?",
+            "my": "Adakah anda perasan sebarang perubahan dalam tahap kesedaran anda?"
         },
         'choice': (getAnswer: Function, lang: string, setLowConsciousness?: Function) => (
             <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
@@ -385,8 +385,8 @@ const Question: Array<QuestionTemplate> = [
     {
         'questionID': 12,
         'question': {
-            "en": "Lastly, have you recently traveled to an area known for dengue fever outbreaks?",
-            "my": "Akhir sekali, pernahkah anda pergi ke kawasan yang terkenal dengan wabak demam denggi baru-baru ini?"
+            "en": "Lastly, have you traveled to a dengue fever outbreak area recently?",
+            "my": "Akhir sekali, adakah anda pergi ke kawasan wabak demam denggi baru-baru ini?"
         },
         'choice': (getAnswer: Function, lang: string, setTraveltoHotspot?: Function) => (
             <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>

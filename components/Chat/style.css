@@ -18,6 +18,7 @@
     padding: 0.1rem;
     border-top-left-radius: 0.7rem;
     border-top-right-radius: 0.7rem;
+    align-items: center;
 }
 
 .chat-body {
@@ -254,6 +255,14 @@
 
     .left {
         animation: enterleft 0.3s ease-out;
+    }
+
+    .chat-header>h2 {
+        width: 50%;
+        overflow: hidden;
+        flex-grow: 1;
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
     }
 
     .chat-container {

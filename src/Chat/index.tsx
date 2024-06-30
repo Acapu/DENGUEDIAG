@@ -1,7 +1,7 @@
 import ChatContainer from "components/Chat/ChatContainer"
 import ChatHeader from "components/Chat/ChatHeader"
 import ChatBody from "components/Chat/ChatBody"
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Question from "./Question";
 import Answer from "./Answer";
 import Conclusion from "./Conclusion";
@@ -13,7 +13,8 @@ interface Dialog {
     id: string
 }
 
-interface FeverSymptoms {
+export interface FeverSymptoms {
+    [key: string]: boolean | number,
     fever: boolean,
     feverDays: number,
     headache: boolean,
@@ -23,18 +24,18 @@ interface FeverSymptoms {
     rash: boolean
 }
 
-interface CriticalSymptoms {
+export interface CriticalSymptoms {
+    [key: string]: boolean,
     bleedingMucose: boolean,
     multipleVomiting: boolean,
-    diarhea: boolean,
-    persistentDiarhea: boolean,
+    persistentdiarrhoea: boolean,
     stomachpain: boolean,
     difficultyBreathing: boolean,
     lowConsciousness: boolean,
     extremeFatigue: boolean
 }
 
-interface AdditionalDengueInfo {
+export interface AdditionalDengueInfo {
     travelHotspot: boolean,
     liveHotspot: boolean
 }
@@ -42,7 +43,20 @@ interface AdditionalDengueInfo {
 export default function ChatInterface() {
 
     const [dialog, setDialog] = useState<Array<Dialog>>([]);
-    const [language, _] = useState<string>("en");
+    const [language, setLanguage] = useState<string>("en");
+    const suspectDengueValue = useRef(0);
+    const timeout = useRef<Array<number>>([])
+    const setChatLanguage = () => {
+        let confirmation = confirm("Changing language will reset the session and any progress won't be saved. Continue?");
+        if (confirmation) {
+            for (let t of timeout.current) {
+                clearTimeout(t);
+            }
+            timeout.current = [];
+            setDialog([]);
+            setLanguage(prevLang => (prevLang === "en" ? "my" : "en"));
+        }
+    }
 
     const probablyDengue = useForm<AdditionalDengueInfo>({
         defaultValues: {
@@ -61,13 +75,12 @@ export default function ChatInterface() {
     const criticalSymptoms = useForm<CriticalSymptoms>({
         defaultValues: {
             bleedingMucose: false,
-            multipleVomiting: false,
-            diarhea: false,
-            persistentDiarhea: false,
-            stomachpain: false,
-            difficultyBreathing: false,
-            lowConsciousness: false,
-            extremeFatigue: false
+            multipleVomiting: false, //Gastrointestinal system
+            persistentdiarrhoea: false, //Gastrointestinal system
+            stomachpain: false, //Gastrointestinal system
+            difficultyBreathing: false,// Respiratory system
+            lowConsciousness: false, // Central nervous system 
+            extremeFatigue: false // Central nervous system 
         }
     })
 
@@ -80,12 +93,14 @@ export default function ChatInterface() {
         feverSymptoms.setValue("bodyache", symptoms.bodyache);
         feverSymptoms.setValue("headache", symptoms.headache);
         feverSymptoms.setValue("vomiting", symptoms.vomiting);
+        if (Object.values(symptoms).some(v => v)) suspectDengueValue.current += 1;
     }
 
-    const setCriticalSymptoms = (symptoms: { persistentDiarhea: false, stomachpain: false, difficultyBreathing: false }) => {
-        criticalSymptoms.setValue("persistentDiarhea", symptoms.persistentDiarhea);
+    const setCriticalSymptoms = (symptoms: { persistentdiarrhoea: false, stomachpain: false, difficultyBreathing: false }) => {
+        criticalSymptoms.setValue("persistentdiarrhoea", symptoms.persistentdiarrhoea);
         criticalSymptoms.setValue("stomachpain", symptoms.stomachpain);
         criticalSymptoms.setValue("difficultyBreathing", symptoms.difficultyBreathing);
+        if (Object.values(symptoms).some(v => v)) suspectDengueValue.current += 2;
     }
 
     const setVomitingDays = (times: number) => {
@@ -93,27 +108,33 @@ export default function ChatInterface() {
         feverSymptoms.setValue("vomitingDays", times);
         if (times >= 3) {
             criticalSymptoms.setValue("multipleVomiting", true)
+            suspectDengueValue.current += 2;
         } else {
             if (feverSymptoms.watch("feverDays") > 2) {
                 criticalSymptoms.setValue("multipleVomiting", true)
+                suspectDengueValue.current += 2;
             }
         }
     }
 
     const setRashSymptom = () => {
         feverSymptoms.setValue('rash', true);
+        suspectDengueValue.current += 2;
     }
 
     const setBleedingMucose = () => {
         criticalSymptoms.setValue('bleedingMucose', true);
+        suspectDengueValue.current += 1;
     }
 
     const setExtremeFatigue = () => {
         criticalSymptoms.setValue("extremeFatigue", true);
+        suspectDengueValue.current += 1;
     }
 
     const setLowConsciousness = () => {
         criticalSymptoms.setValue("lowConsciousness", true);
+        suspectDengueValue.current += 1;
     }
 
     const setLiveInHotspot = () => {
@@ -169,22 +190,27 @@ export default function ChatInterface() {
         console.log("feverSymptoms", feverSymptoms.watch());
         console.log("critical symptoms", criticalSymptoms.watch());
         console.log("probably symptoms", probablyDengue.watch());
-        let phase = Conclusion['notDengue']
+        let phase = Conclusion['otherFever']
         const criticalSymptomNum = Object.values(criticalSymptoms.watch()).filter(v => (v === true)).length;
-        const feverSymptomsNum = Object.values(feverSymptoms.watch()).filter(v => (typeof(v) === "boolean" && v === true)).length;
+        const feverSymptomsNum = Object.keys(feverSymptoms.watch()).filter(v => (typeof (feverSymptoms.watch(v)) === "boolean" && feverSymptoms.watch(v) === true && v !== "fever")).length;
         console.log(feverSymptoms.watch("fever"), "feverrrrrr");
         console.log(criticalSymptomNum);
         console.log(feverSymptomsNum);
-        
+        console.log(suspectDengueValue.current);
+
         if (!feverSymptoms.watch("fever")) {
             console.log("tak demam");
-            
+
             if (criticalSymptomNum > 0 || feverSymptomsNum > 0) {
                 console.log("ada simptom");
                 if (probablyDengue.watch("liveHotspot") || probablyDengue.watch("travelHotspot")) {
                     phase = Conclusion['suspectDengue'];
                 } else {
-                    phase = Conclusion['otherFever'];
+                    if (suspectDengueValue.current >= 2) {
+                        phase = Conclusion['suspectDengue'];
+                    } else {
+                        phase = Conclusion['otherFever'];
+                    }
                 }
             } else {
                 console.log("xde simptom");
@@ -201,9 +227,18 @@ export default function ChatInterface() {
         let conclusionDialog: Dialog = {
             text: (
                 <>
-                    <span>{phase.conclusion[language]}</span>
+                    <span style={{ fontWeight: "bold" }}>{phase.conclusion[language]}</span>
                     <br /><br />
                     <span>{phase.summary[language]}</span>
+                    {
+                        phase.explanation !== undefined &&
+                        <>
+                            <br /><hr />
+                            <span style={{ textDecorationLine: "underline", marginBottom: "5px", textUnderlineOffset: "3px", fontWeight: "bold" }}>Explanation</span>
+                            <br />
+                            {phase.explanation[language](feverSymptoms.watch(), criticalSymptoms.watch(), probablyDengue.watch())}
+                        </>
+                    }
                 </>
             ),
             type: "bot",
@@ -234,14 +269,13 @@ export default function ChatInterface() {
         }, 200)
 
         if (typeof (newDialog.text) === 'string') {
-            const nextDialog = setTimeout(() => {
+            timeout.current.push(setTimeout(() => {
                 if (typeof (Answer[id].answer[choice].nextQuestionID) === 'number') {
                     addQuestionDialog(Answer[id].answer[choice].nextQuestionID);
                 }
-                clearTimeout(nextDialog);
-            }, (newDialog.text.length * 40))
+            }, (screen.width > 800 ? newDialog.text.length * 40 : 1000)))
         } else {
-            const nextDialog = setTimeout(() => {
+            timeout.current.push(setTimeout(() => {
                 if (id === 3 && feverSymptoms.watch("vomiting")) {
                     addQuestionDialog(7);
                     return;
@@ -249,8 +283,7 @@ export default function ChatInterface() {
                 if (typeof (Answer[id].answer[choice].nextQuestionID) === 'number') {
                     addQuestionDialog(Answer[id].answer[choice].nextQuestionID);
                 }
-                clearTimeout(nextDialog);
-            }, (500))
+            }, (500)))
         }
     }
 
@@ -276,32 +309,22 @@ export default function ChatInterface() {
             addDialog((dialog !== undefined ? dialog : botDialog));
             if (Question[id] && Question[id]?.choice !== null) {
                 const setter = getSetterFunction(id);
-                const test = setTimeout(() => {
+                timeout.current.push(setTimeout(() => {
                     const choiceDialog = {
                         text: Question[id].choice(getAnswer, language, setter),
                         type: "user",
                         id: getRandomNumber()
                     }
-                    setDialog(prevDialog => ([
-                        ...prevDialog,
-                        choiceDialog
-                    ]))
-                    const scrollTimeout = setTimeout(() => {
-                        const cDialog = document.getElementById(choiceDialog.id);
-                        cDialog?.scrollIntoView({ behavior: "smooth" })
-                        clearTimeout(scrollTimeout);
-                    }, 200)
-                    clearTimeout(test);
-                }, (botDialog.text.length * 40))
+                    addDialog(choiceDialog);
+                }, (screen.width > 800 ? botDialog.text.length * 40 : 1000)))
             } else {
-                const contBotDialog = setTimeout(() => {
+                timeout.current.push(setTimeout(() => {
                     addQuestionDialog(id + 1).then(res => {
                         if (res && id === 14) {
                             generateConclusion()
                         }
                     });
-                    clearTimeout(contBotDialog);
-                }, (botDialog.text.length * 40))
+                }, (screen.width > 800 ? botDialog.text.length * 40 : 1000)))
             }
         }
         return true
@@ -309,7 +332,7 @@ export default function ChatInterface() {
 
     useEffect(() => {
         addQuestionDialog(0);
-    }, [])
+    }, [language])
 
     useEffect(() => {
         const listener = (ev: WindowEventMap[keyof WindowEventMap]) => {
@@ -324,7 +347,7 @@ export default function ChatInterface() {
 
     return (
         <ChatContainer>
-            <ChatHeader title='DengueDiag Bot' reloadChat={() => window.location.reload()} />
+            <ChatHeader language={language} setLanguage={setChatLanguage} title='DengueDiag Bot' reloadChat={() => window.location.reload()} />
             <ChatBody dialog={dialog} />
         </ChatContainer>
     )
