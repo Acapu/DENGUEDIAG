@@ -17,7 +17,7 @@ export default function ChatHeader({ title, reloadChat = () => { } }: props) {
                 onClick={() => {
                     let confirmation = confirm("Are you sure you want to leave this page? Any progress won't be saved.");
                     if (confirmation) {
-                        navigate("/home", { replace: true });
+                        navigate("/", { replace: true });
                     }
                 }}
             >
