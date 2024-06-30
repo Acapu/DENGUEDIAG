@@ -17,7 +17,7 @@ const router: any = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: 'chat-denguediag',
+                path: '/chat-denguediag',
                 element: <Chat />
             }
         ]
