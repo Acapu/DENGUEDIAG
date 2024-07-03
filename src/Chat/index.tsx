@@ -198,9 +198,13 @@ export default function ChatInterface() {
         console.log(feverSymptomsNum);
         console.log(suspectDengueValue.current);
 
-        if (!feverSymptoms.watch("fever")) {
-            console.log("tak demam");
-
+        if (criticalSymptomNum >= 1 && feverSymptoms.watch("fever")) {
+            console.log("critical", Object.values(criticalSymptoms.watch()).filter(v => (v === true)).length);
+            phase = Conclusion['criticalPhase'];
+        } else if (feverSymptomsNum >= 2 && feverSymptoms.watch("fever")) {
+            console.log("febrileeeee");
+            phase = Conclusion['febrilePhase'];
+        } else {
             if (criticalSymptomNum > 0 || feverSymptomsNum > 0) {
                 console.log("ada simptom");
                 if (probablyDengue.watch("liveHotspot") || probablyDengue.watch("travelHotspot")) {
@@ -216,13 +220,6 @@ export default function ChatInterface() {
                 console.log("xde simptom");
                 phase = Conclusion['notDengue'];
             }
-        }
-        else if (criticalSymptomNum >= 1 && feverSymptoms.watch("fever")) {
-            console.log("critical", Object.values(criticalSymptoms.watch()).filter(v => (v === true)).length);
-            phase = Conclusion['criticalPhase'];
-        } else if (feverSymptomsNum >= 2 && feverSymptoms.watch("fever")) {
-            console.log("febrileeeee");
-            phase = Conclusion['febrilePhase'];
         }
         let conclusionDialog: Dialog = {
             text: (
