@@ -16,7 +16,7 @@ export default function ChatHeader({ title, language, setLanguage, reloadChat = 
 
     return (
         <div className='chat-header'>
-            <button style={{ width: "fit-content", backgroundColor: "transparent" }}
+            <button id='back-btn' style={{ width: "fit-content", backgroundColor: "transparent" }}
                 onClick={() => {
                     let confirmation = confirm("Are you sure you want to leave this page? Any progress won't be saved.");
                     if (confirmation) {
@@ -24,14 +24,14 @@ export default function ChatHeader({ title, language, setLanguage, reloadChat = 
                     }
                 }}
             >
-                <img src={LeftArrow} style={{ width: "1.5em" }} />
+                <img src={LeftArrow} style={{ width: "1.5em" }} alt='Back Button' />
             </button>
             <h2> {title} </h2>
             <Toggle language={language} setLanguage={setLanguage} />
-            <button style={{ width: "fit-content", backgroundColor: "transparent" }}
+            <button id='restart-btn' style={{ width: "fit-content", backgroundColor: "transparent" }}
                 onClick={reloadChat}
             >
-                <img src={Restart} style={{ width: "2em" }} />
+                <img src={Restart} style={{ width: "2em" }} alt='Restart button' />
             </button>
         </div>
     )
