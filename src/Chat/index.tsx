@@ -43,7 +43,7 @@ export interface AdditionalDengueInfo {
 export default function ChatInterface() {
 
     const [dialog, setDialog] = useState<Array<Dialog>>([]);
-    const [language, setLanguage] = useState<string>("en");
+    const [language, setLanguage] = useState<string>(localStorage.getItem("lang") || "en");
     const suspectDengueValue = useRef(0);
     const timeout = useRef<Array<number>>([])
     const setChatLanguage = () => {
@@ -234,7 +234,7 @@ export default function ChatInterface() {
                         phase.explanation !== undefined &&
                         <>
                             <br /><hr />
-                            <span style={{ textDecorationLine: "underline", marginBottom: "5px", textUnderlineOffset: "3px", fontWeight: "bold" }}>Explanation</span>
+                            <span style={{ textDecorationLine: "underline", marginBottom: "5px", textUnderlineOffset: "3px", fontWeight: "bold" }}>{language === "en" ? "Explanation" : "Penerangan"}</span>
                             <br />
                             {phase.explanation[language](feverSymptoms.watch(), criticalSymptoms.watch(), probablyDengue.watch())}
                         </>
@@ -331,6 +331,7 @@ export default function ChatInterface() {
     }
 
     useEffect(() => {
+        localStorage.setItem("lang", language);
         addQuestionDialog(0);
     }, [language])
 

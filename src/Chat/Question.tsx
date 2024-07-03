@@ -45,10 +45,10 @@ const Question: Array<QuestionTemplate> = [
         },
         'choice': (getAnswer: Function, lang: string) => (
             <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-                <button onClick={() => getAnswer(1, 0)} style={{ backgroundColor: "green" }}>
+                <button onClick={() => getAnswer(1, 0)} style={{ backgroundColor: "green", color: "white" }}>
                     {lang === "en" ? "Yes" : "Ya"}
                 </button>
-                <button onClick={() => getAnswer(1, 1)}>
+                <button onClick={() => getAnswer(1, 1)} style={{ backgroundColor: "black", color: "white" }}>
                     {lang === "en" ? "No" : "Tidak"}
                 </button>
             </div>
@@ -181,8 +181,8 @@ const Question: Array<QuestionTemplate> = [
                 <button onClick={() => {
                     getAnswer(4, 0)
                     if (setRash !== undefined) setRash();
-                }} style={{ backgroundColor: "green" }}>{lang === "en" ? "Yes" : "Ya"}</button>
-                <button onClick={() => getAnswer(4, 1)}>{lang === "en" ? "No" : "Tidak"}</button>
+                }} style={{ backgroundColor: "green", color: "white" }}>{lang === "en" ? "Yes" : "Ya"}</button>
+                <button onClick={() => getAnswer(4, 1)} style={{backgroundColor: "black", color: "white"}}>{lang === "en" ? "No" : "Tidak"}</button>
             </div>
         )
     },
@@ -217,8 +217,8 @@ const Question: Array<QuestionTemplate> = [
                 <button onClick={() => {
                     getAnswer(5, 0)
                     if (setBleedingMucose !== undefined) setBleedingMucose()
-                }} style={{ backgroundColor: "green" }}>{lang === "en" ? "Yes" : "Ya"}</button>
-                <button onClick={() => getAnswer(5, 1)}>{lang === "en" ? "No" : "Tidak"}</button>
+                }} style={{ backgroundColor: "green", color: "white" }}>{lang === "en" ? "Yes" : "Ya"}</button>
+                <button onClick={() => getAnswer(5, 1)} style={{ backgroundColor: "black", color: "white" }}>{lang === "en" ? "No" : "Tidak"}</button>
             </div>
         )
     },
@@ -330,10 +330,10 @@ const Question: Array<QuestionTemplate> = [
                 <button onClick={() => {
                     getAnswer(8, 0);
                     if (setExtremeFatigue !== undefined) setExtremeFatigue();
-                }} style={{ backgroundColor: "green" }}>
+                }} style={{ backgroundColor: "green", color: "white" }}>
                     {lang === "en" ? "Yes" : "Ya"}
                 </button>
-                <button onClick={() => getAnswer(8, 1)}>
+                <button onClick={() => getAnswer(8, 1)} style={{ backgroundColor: "black", color: "white" }}>
                     {lang === "en" ? "No" : "Tidak"}
                 </button>
             </div>
@@ -350,10 +350,10 @@ const Question: Array<QuestionTemplate> = [
                 <button onClick={() => {
                     getAnswer(9, 0)
                     if (setLowConsciousness !== undefined) setLowConsciousness()
-                }} style={{ backgroundColor: "green" }}>
+                }} style={{ backgroundColor: "green", color: "white" }}>
                     {lang === "en" ? "Yes" : "Ya"}
                 </button>
-                <button onClick={() => getAnswer(9, 1)}>
+                <button onClick={() => getAnswer(9, 1)} style={{ backgroundColor: "black", color: "white" }}>
                     {lang === "en" ? "No" : "Tidak"}
                 </button>
             </div>
@@ -370,10 +370,10 @@ const Question: Array<QuestionTemplate> = [
                 <button onClick={() => {
                     getAnswer(10, 0);
                     if (setLiveInHotspot !== undefined) setLiveInHotspot();
-                }} style={{ backgroundColor: "green" }}>
+                }} style={{ backgroundColor: "green", color: "white" }}>
                     {lang === "en" ? "Yes" : "Ya"}
                 </button>
-                <button onClick={() => getAnswer(10, 1)}>
+                <button onClick={() => getAnswer(10, 1)} style={{ backgroundColor: "black", color: "white" }}>
                     {lang === "en" ? "No" : "Tidak"}
                 </button>
                 <button onClick={() => getAnswer(10, 2)} style={{ backgroundColor: "yellow", color: "black" }}>
@@ -393,10 +393,10 @@ const Question: Array<QuestionTemplate> = [
                 <button onClick={() => {
                     getAnswer(11, 0);
                     if (setTraveltoHotspot !== undefined) setTraveltoHotspot()
-                }} style={{ backgroundColor: "green" }}>
+                }} style={{ backgroundColor: "green", color: "white" }}>
                     {lang === "en" ? "Yes" : "Ya"}
                 </button>
-                <button onClick={() => getAnswer(11, 1)}>
+                <button onClick={() => getAnswer(11, 1)} style={{ backgroundColor: "black", color: "white" }}>
                     {lang === "en" ? "No" : "Tidak"}
                 </button>
                 <button onClick={() => getAnswer(11, 2)} style={{ backgroundColor: "yellow", color: "black" }}>
